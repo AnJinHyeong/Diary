@@ -1,0 +1,186 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Sunflower:wght@500&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Grape+Nuts&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+/* 공용 */
+*{
+    margin: 0;
+    padding: 0;
+    /* font-family: 'Sunflower', sans-serif; */
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+h1 h2 h3 h4 h5 h6 {
+    /* letter-spacing: -0.03em; */
+}
+
+#root{
+    width: 100%;
+}
+
+body{
+    background-color: rgba(var(--b3f,250,250,250),1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0px;
+}
+
+/* App */
+.App{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    margin: auto;
+}
+
+
+/* Header */
+.Header{
+    max-width: 1000vw;
+    height: 100%;
+    width: 100%;
+}
+
+.topLine{
+    position: relative;
+    display: block;
+    background-color: black;
+    text-align: center;
+    color: #fff;
+    line-height: 30px;
+    font-size: 12px;
+    font-weight: 600;
+    width: 100%;
+    height: 30px;
+}
+
+.topLine .inner{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+/* Nav */
+.nav{
+    position: relative;
+    width: 95%;
+    height: 50px;
+    margin: 0 auto;
+    padding: 15px 0;
+    max-width: 2200px;
+}
+
+.nav_left{
+    position: relative;
+    display: table;
+    width: 50%;
+    height: 100%;
+    float: left;
+    z-index: 900;
+    text-align: left;
+}
+
+.logo{
+    font-size: 30px;
+    font-weight: 600;
+    color: black;
+    width: 100%;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.logo img{
+    width: 50%;
+    
+}
+
+.nav_right{
+    position: relative;
+    display: table;
+    width: 50%;
+    height: 100%;
+    float: left;
+    text-align: right;
+    z-index: 900;
+}
+
+.nav_right ul{
+    height: 100%;
+}
+
+.nav_right ul li{
+    position: relative;
+    display: inline-block;
+    height: 100%;
+    margin-left: 10px;
+}
+
+.nav_right ul li .cellBox {
+    width: 100%;
+    height: 100%;
+    display: table;
+}
+
+.nav_right ul li .cellBox .cell{
+    display: table-cell;
+    width: 100%;
+    height: 100%;
+    text-align: right;
+    vertical-align: middle;
+}
+
+.nav_right ul li .cellBox .cell span{
+    display: block;
+    width: 40px;
+    height: 40px;
+    background: black;
+    border-radius: 50px;
+    text-align: center;
+}
+
+.nav_right ul li .cellBox .cell span img{
+    height: 18px;
+    margin: 11px 0;
+}
+
+.nav_right ul li .cellBox .cell .count{
+    position: absolute;
+    top: 8px;
+    right: -8px;
+    width: 25px;
+    height: 25px;
+    background: #f7c37a;
+    color: #111;
+    line-height: 25px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+/* Section */
+.Section{
+    min-height: 100vh;
+    min-width: 99vw;
+}
+
+/* DiaryButton */
+.DiaryButton{
+    border: none;
+    background-color: rgba(var(--b3f,250,250,250),1);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
