@@ -67,11 +67,11 @@ const DrSection = ({pageView}) => {
                         pageView !== "list" ?  
                         <div className="info_box">
                             <Link to={"/"}><i className="fas fa-times add_btn"></i></Link>
+                            
                         </div>
                         :
                         <div className="info_box">
-                            
-                            <Link to={"/new"}><i className="fa-solid fa-plus add_btn"></i></Link>
+                            <Link to={"/new"}><i className="fas fa-pen add_btn"></i></Link>
                         </div> 
                     }
                     {
@@ -83,7 +83,7 @@ const DrSection = ({pageView}) => {
                     }
                 </div>
             </div>
-             <div className="DrSection">
+             <div className={ pageView === "list" ? 'DrSectionList' : 'DrSection'}>
                 { 
                     pageView === "list" 
                     ? 

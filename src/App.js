@@ -51,56 +51,56 @@ const dummyData = [
     emotion : 1,
     content : "오늘의일기 1번  오늘의일기 오늘의일기오늘의일기오늘의일기오늘의일기 ㅍ 오늘의일기 오늘의일기 오늘의일기 오늘의일기 오늘의일기 오늘의일기 오늘의일기",
     date : 1649239006617,
-    likeday : 1,
+    likeDay : 1,
   },
   {
     id : 2,
     emotion : 2,
     content : "오늘의일기 2번 daslkdnaskjdnj 아닞 니짜 이건 아니지 않냐교 너무 어렵잖아 나 좀 살 려줘",
     date : 1649239006618,
-    likeday : 0,
+    likeDay : 0,
   },
   {
     id : 3,
     emotion : 3,
     content : "오늘의일기 3번",
     date : 1649239006619,
-    likeday : 1,
+    likeDay : 1,
   },
   {
     id : 4,
     emotion : 4,
     content : "오늘의일기 4번",
     date : 1649239006620,
-    likeday : 0,
+    likeDay : 0,
   },
   {
     id : 5,
     emotion : 5,
     content : "오늘의일기 5번",
     date : 1649239006621,
-    likeday : 0,
+    likeDay : 0,
   },
   {
     id : 6,
     emotion : 1,
     content : "오늘의일기 6번",
     date : 1649239006622,
-    likeday : 0,
+    likeDay : 0,
   },
   {
     id : 7,
     emotion : 2,
     content : "오늘의일기 7번",
     date : 1649239006623,
-    likeday : 0,
+    likeDay : 0,
   },
   {
     id : 8,
     emotion : 5,
     content : "오늘의일기 8번",
     date : 1649239006624,
-    likeday : 0,
+    likeDay : 0,
   },
 ]
 
@@ -110,7 +110,7 @@ function App() {
   const dataId = useRef(0);
 
   //CREATE
-  const onCreate = (date, content, emotion, likeday) => {
+  const onCreate = (date, content, emotion, likeDay) => {
     dispatch({
       type : "CREATE", 
       data : {
@@ -118,7 +118,7 @@ function App() {
         date : new Date(date).getTime(),
         content,
         emotion,
-        likeday
+        likeDay
       },
     });
     dataId.current += 1;
@@ -128,7 +128,7 @@ function App() {
     dispatch({type : "REMOVE", targetId});
   }
   //EDIT
-  const onEdit = (targetId, date, content, emotion, likeday) => {
+  const onEdit = (targetId, date, content, emotion, likeDay) => {
     dispatch({
       type : "EDIT",
       data : { 
@@ -136,7 +136,7 @@ function App() {
         date : new Date(date).getTime(),
         content,
         emotion,
-        likeday
+        likeDay
       }
     });
   }

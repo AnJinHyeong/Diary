@@ -175,12 +175,22 @@ body{
     min-width: 99vw;
 }
 
-/* DiaryButton */
-.DiaryButton{
-    border: none;
-    background-color: rgba(var(--b3f,250,250,250),1);
-    font-size: 14px;
-    cursor: pointer;
+
+
+
+/* Footer */
+.Footer{
+    position: absolute; 
+    right: 0px; 
+    bottom: 0px;
+    width: 40px;
+    height: 40px;
+    background-color: black;
+    color: white;
+    border-radius: 30px;
+    margin-right: 20px;
+    display: flex;
+    font-size: 16px;
+    justify-content: center;
+    align-items: center;
 }
-
-

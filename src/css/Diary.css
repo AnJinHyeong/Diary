@@ -67,7 +67,7 @@
 .DlSection{
     padding: 20px 0;
     display: flex;
-    max-height: 70vh;
+    max-height: 600px;
     overflow-y: scroll;
 }
 
@@ -102,7 +102,7 @@
 
 /* DrHeader */
 .DrHeader{
-    padding: 10px 5px;
+    padding: 5px;
     display: flex;
     justify-content: flex-end;
     border: 1px solid #dcdcdc;
@@ -111,12 +111,12 @@
 }
 
 .DH_left{
-    width: 30%;
+    width: 40%;
     text-align: left;
 }
 
 .DH_right{
-    width: 70%;
+    width: 60%;
     text-align: right;
     display: flex;
     justify-content: flex-end;
@@ -131,13 +131,21 @@
 .add_btn{
     font-size: 16px;
     cursor: pointer;
-    color: black;
+    color: rgb(168, 173, 190);
 }
 
 .info_btn{
     font-size: 16px;
     cursor: pointer;
     color: black;
+}
+
+/* DiaryButton */
+.DiaryButton{
+    border: none;
+    background-color: rgba(var(--b3f,250,250,250),1);
+    font-size: 14px;
+    cursor: pointer;
 }
 
 /* DiaryDate */
@@ -176,11 +184,9 @@
 /* DrSection */
 .DrSection{
     width: 100%;
-    height: 70vh;
-    min-height: 70vh;
-    max-height: 70vh;
+    height: 650px;
     margin: 0;
-    padding: 20px 0;
+    padding-top: 15px ;
     background-color: white;
     border: 1px solid rgba(var(--b6a,219,219,219),1);
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -188,6 +194,26 @@
 }
 
 .DrSection::-webkit-scrollbar{
+    display: none;
+}
+
+.DrSectionList{
+    width: 100%;
+    height: auto;
+    min-height: 650px;
+    max-height: 70vh;
+    margin: 0;
+    padding: 10px 0;
+    background-color: white;
+    border: 1px solid rgba(var(--b6a,219,219,219),1);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    overflow-y: scroll;
+    /* background-image: url( "../../public/assets/img/basic.jpg" );
+    background-repeat : no-repeat;
+    background-size : cover; */
+}
+
+.DrSectionList::-webkit-scrollbar{
     display: none;
 }
 
@@ -199,10 +225,21 @@
 .DE_header{
     padding: 0 20px;
     margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
 }
 
 .DE_header h2{
     font-size: 20px;
+    margin: 0 15px;
+}
+
+.like_btn{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    padding-top: 3px;
 }
 
 .DE_section{
@@ -229,6 +266,19 @@
 
 .DE_inner_date label{
     margin-right: 10px;
+}
+
+.DE_inner_date input{
+    border: 1px solid gray;
+    padding: 5px;
+    cursor: pointer;
+    font-family: 'Grape Nuts', cursive;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.DE_inner_date input:focus{
+    outline: none;
 }
 
 .DE_inner_emotion{
@@ -347,6 +397,16 @@
     padding: 0 10px;
 }
 
+.diary-zero{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #6a6a6a;
+    font-size: 14px;
+}
+
 .diary_item_box{
     width: 90%;
     height: 80px;
@@ -403,7 +463,7 @@
     width: 60%;
 }
 
-.DiaryItem .diary_date {
+.diary_date {
     font-weight: bold;
     font-size: 16px;
     margin-bottom: 5px;
@@ -426,10 +486,43 @@
     padding-right: 5px;
 }
 
-.btn_wrapper .unlike_btn{
+.btn_wrapper .unlikeDay_btn{
     color: #ffeaef;
 }
 
-.btn_wrapper .likeday_btn{
+.likeDay_btn{
     color: #ff7d9d;
+}
+
+/* DiaryView */
+.DiaryView{
+     margin: 80px 0;
+}
+
+.DV_inner{
+    width: 80%;
+    margin: 20px auto;
+    border: 1px solid #dcdcdc;
+}
+
+.DV_inner_img{
+    margin: 10px auto;
+    padding: 0;
+    min-height: 250px;
+}
+
+.DV_inner_info{
+    display: flex;
+    margin: 10px auto;
+    padding: 5px 10px;
+    justify-content: space-between;
+}
+
+.DV_inner_content{
+    padding: 5px;
+    min-height: 130px;
+    width: 98%;
+    margin: 0 auto;
+    font-size: 14px;
+    text-align: left;
 }

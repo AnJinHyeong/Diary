@@ -1,13 +1,7 @@
-import { useReducer, useState } from "react";
-
 import TopLine from "../components/TopLine";
-import DlHeader from "../components/DlHeader";
 import DlSection from "../components/DlSection ";
-import DrHeader from "../components/DrHeader";
-import DiaryEditor from "./DiaryEditor";
-import DiaryList from "./DiaryList";
-import { useNavigate } from "react-router-dom";
 import DrSection from "./DrSection";
+import Footer from "./Footer";
 
 const Section = ({pageView}) => {
 
@@ -23,6 +17,7 @@ const Section = ({pageView}) => {
                     <DrSection pageView={pageView}/>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 
