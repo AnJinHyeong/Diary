@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import DiaryEditor from "./DiaryEditor";
 import DiaryDate from "./DiaryDate";
@@ -7,16 +7,21 @@ import DiaryButton from "./DiaryButton";
 import DiaryList from "./DiaryList";
 
 import { DiaryStateContext } from "../App";
-import DiaryView from "./DiaryView";
+import DiaryDetail from "./DiaryDetail";
+import { DiaryDispatchContext } from "../App";
 
 
-const DrSection = ({pageView}) => {
+const DrSection = ({pageView, isEdit, originData}) => {
 
     const diaryList = useContext(DiaryStateContext);
+    const { onRemove } = useContext(DiaryDispatchContext);
 
+    const navigate = useNavigate();
+    const {id} = useParams();
     const [curDate, setCurDate] = useState(new Date());
     const [data, setData] = useState([]);
     const headText = `${curDate.getFullYear()}. ${curDate.getMonth() + 1}`;
+
 
     useEffect(() => {
         if(diaryList.length >= 0){
@@ -49,6 +54,13 @@ const DrSection = ({pageView}) => {
         );
     }
 
+    const handleRemove = () => {
+        if(window.confirm("정말 삭제하시겠습니까?")){
+            onRemove(Number(id));
+            navigate('/' , {replace : true});
+        }
+    }
+
     return (
         <div>
             <div className="DrHeader">
@@ -59,27 +71,27 @@ const DrSection = ({pageView}) => {
                         leftChild={<DiaryButton text={<i className="fas fa-angle-left"></i>} onClick={() => lastMonth()}/>}
                         rightChild={<DiaryButton text={<i className="fas fa-angle-right"></i>} onClick={() => nextMonth()}/>}
                         /> 
-                        : null
+                        : 
+                        null
                     }
                 </div>
                 <div className="DH_right">
                     {
                         pageView !== "list" ?  
                         <div className="info_box">
-                            <Link to={"/"}><i className="fas fa-times add_btn"></i></Link>
-                            
+                            { pageView === "diary" ? <Link to={`/edit/${id}`}><i className="fa-solid fa-file-pen edit_btn" /></Link> : null }
+                            { pageView === "diary" ? <i className="fa-regular fa-trash-can delete_btn" onClick={() => {handleRemove()}}/> : null }
+                            { 
+                                pageView === "diary" ? 
+                                <i className="fas fa-times close_btn" onClick={() => navigate(`/`)}></i> 
+                                :
+                                <i className="fas fa-times close_btn" onClick={() => navigate(-1)}></i> 
+                            }
                         </div>
                         :
                         <div className="info_box">
                             <Link to={"/new"}><i className="fas fa-pen add_btn"></i></Link>
                         </div> 
-                    }
-                    {
-                        pageView === "list" ? 
-                        <div className="info_box">
-                            <i className="fa-solid fa-bars info_btn"></i>
-                        </div> 
-                        : null
                     }
                 </div>
             </div>
@@ -89,7 +101,7 @@ const DrSection = ({pageView}) => {
                     ? 
                     <DiaryList diaryList={data}/> : pageView === "diary" 
                     ?
-                    <DiaryView /> : <DiaryEditor pageView={pageView} /> 
+                    <DiaryDetail diaryList={data}/> : <DiaryEditor pageView={pageView} isEdit={isEdit} originData={originData} /> 
                 }
             </div>
         </div>

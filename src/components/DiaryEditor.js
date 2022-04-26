@@ -1,5 +1,5 @@
-import { useCallback, useContext, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { DiaryDispatchContext } from "../App";
 
 import EmotionItem from "../components/EmotionItem";
@@ -7,14 +7,18 @@ import EmotionItem from "../components/EmotionItem";
 import { getStringDate } from "../utils/date";
 import { emotionList } from "../utils/emotion";
 
-const DiaryEditor = ({ pageView }) => {
+const DiaryEditor = ({ pageView, isEdit, originData }) => {
+
     
-    const navigator = useNavigate();
+    const navigate = useNavigate();
     const contentRef = useRef();
+
     const [date, setDate] = useState(getStringDate(new Date()));
     const [emotion, setEmotion] = useState(3);
     const [content, setContent] = useState("");
     const [likeDay, setLikeDay] = useState(0);
+
+    const { onCreate, onEdit } = useContext(DiaryDispatchContext);
 
     const handleClickEmote = useCallback((emotion) => {
         setEmotion(emotion);
@@ -24,19 +28,35 @@ const DiaryEditor = ({ pageView }) => {
         if(likeDay === 0) setLikeDay(1);
         else setLikeDay(0);
     }
-    
 
-    const { onCreate } = useContext(DiaryDispatchContext);
-    const diarySubmit = () => {
+    const handleSubmit = () => {
         if(content.length < 1){
             contentRef.current.focus();
             return;
         }
 
-        onCreate(date,content,emotion,likeDay);
-        navigator('/', {replace:true});
+        // if(window.confirm(isEdit ? "일기를 수정하시겠습니까?" : "새로운 일기를 작성하시겠습니까?")){
+        if(!isEdit){
+            onCreate(date, content, emotion, likeDay);
+        } else {
+            onEdit(originData.id, date, content, emotion, likeDay);
+        }
+        // }
+        navigate('/', {replace : true});
     }
 
+    useEffect(() => {
+        if(isEdit){
+            setDate(getStringDate(new Date(originData.date)));
+            setEmotion(originData.emotion);
+            setContent(originData.content);
+            setLikeDay(originData.likeDay);
+        }
+
+    }, [isEdit, originData]);
+
+
+ 
     return (
         <div className="DiaryEditor">
             <div className="DE_header">
@@ -50,7 +70,7 @@ const DiaryEditor = ({ pageView }) => {
             <div className="DE_section">
                 <label>Today Date</label>
                 <div className="DE_inner_date">
-                    <input type={"date"} value={date} onChange={(e) => {setDate(e.target.value)}}/>
+                    <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
                 </div>
             </div>
             <div className="DE_section">
@@ -71,11 +91,12 @@ const DiaryEditor = ({ pageView }) => {
             </div>
             <div className="DE_section">
                 <div className="DE_inner_btn">
-                    <button onClick={diarySubmit}>Write</button>   
+                    <button onClick={handleSubmit}>Write</button>   
                 </div>
             </div>
         </div>
     );
+    
 
 }
 

@@ -2,9 +2,12 @@ import TopLine from "../components/TopLine";
 import DlSection from "../components/DlSection ";
 import DrSection from "./DrSection";
 import Footer from "./Footer";
+import { Link } from "react-router-dom";
 
-const Section = ({pageView}) => {
+const Section = ({pageView, isEdit, originData}) => {
 
+    const sessionId = sessionStorage.getItem('userId'); // -> tang 반환
+    console.log(sessionId);
 
     return (
         <div className="Section">
@@ -14,10 +17,10 @@ const Section = ({pageView}) => {
                     <DlSection text={"JinHyeong's Daily Life"}/>
                 </div>
                 <div className="dM-r">
-                    <DrSection pageView={pageView}/>
+                    <DrSection pageView={pageView} isEdit={isEdit} originData={originData}/>
                 </div>
             </div>
-            <Footer />
+            <Link to={"/login"}><Footer /></Link>
         </div>
     );
 

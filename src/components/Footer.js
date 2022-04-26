@@ -2,7 +2,7 @@ const Footer = () => {
 
     return (
         <div className="Footer">
-            <i class="fas fa-door-open"></i>
+            <i className="fas fa-sign-out-alt"></i>
         </div>
     );
     

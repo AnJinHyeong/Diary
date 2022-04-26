@@ -1,4 +1,10 @@
+import { useContext } from "react";
+import { DiaryStateContext } from "../App";
+import DiaryLikeItem from "./DiaryLikeItem";
+
 const DlSection = ({text}) => {
+
+    const diaryList = useContext(DiaryStateContext);
 
     return (
         <div>
@@ -7,26 +13,9 @@ const DlSection = ({text}) => {
             </div>
             <div className="DlSection">
                 <ul>
-                    <li><span>2022.1.12</span> <p>saddassadasdasdasdasdasddsadasadas</p></li>
-                    <li><span>2022.1.12</span> <p>saddassadasdasdasdasdasddsadasadas</p></li>
-                    <li><span>2022.1.12</span> <p>saddassadasdasdasdasdasddsadasadas</p></li>
-                    <li><span>2022.1.12</span> <p>saddassadasdasdasdasdasddsadasadas</p></li>
-                    <li><span>2022.1.12</span> <p>saddassadasdasdasdasdasddsadasadas</p></li>
-                    <li><span>2022.1.12</span> <p>saddassadasdasdasdasdasddsadasadas</p></li>
-                    <li><span>2022.1.12</span> <p>saddassadasdasdasdasdasddsadasadas</p></li>
-                    <li><span>2022.1.12</span> <p>saddassadasdasdasdasdasddsadasadas</p></li>
-                    <li><span>2022.1.12</span> <p>saddassadasdasdasdasdasddsadasadas</p></li>
-                    <li><span>2022.1.12</span> <p>saddassadasdasdasdasdasddsadasadas</p></li>
-                    <li><span>2022.1.12</span> <p>saddassadasdasdasdasdasddsadasadas</p></li>
-                    <li><span>2022.1.12</span> <p>saddassadasdasdasdasdasddsadasadas</p></li>
-                    <li><span>2022.1.12</span> <p>saddassadasdasdasdasdasddsadasadas</p></li>
-                    <li><span>2022.1.12</span> <p>saddassadasdasdasdasdasddsadasadas</p></li>
-                    <li><span>2022.1.12</span> <p>saddassadasdasdasdasdasddsadasadas</p></li>
-                    <li><span>2022.1.12</span> <p>saddassadasdasdasdasdasddsadasadas</p></li>
-                    <li><span>2022.1.12</span> <p>saddassadasdasdasdasdasddsadasadas</p></li>
-                    <li><span>2022.1.12</span> <p>saddassadasdasdasdasdasddsadasadas</p></li>
-                    <li><span>2022.1.12</span> <p>saddassadasdasdasdasdasddsadasadas</p></li>
-                    <li><span>2022.1.12</span> <p>saddassadasdasdasdasdasddsadasadas</p></li>
+                    { 
+                        diaryList.map((it) => it.likeDay === 1 ? <DiaryLikeItem key={it.id} id={it.id} date={it.date} content={it.content}/> : null) 
+                    }
                 </ul>
             </div>
         </div>

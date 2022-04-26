@@ -1,6 +1,33 @@
-import { Link } from "react-router-dom";
+import { useContext, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { UserDispatchContext } from "../App";
 
 const Login = () => {
+
+    const userList = useContext(UserDispatchContext);
+
+    const navigator = useNavigate();
+    const idRef = useRef();
+    const [loginId, setLoginId] = useState("");
+    const [loginPw, setLoginPw] = useState("");
+    
+    const loginSubmit = () => {
+
+        const userCheck = userList.filter((it) => it.uId === loginId);
+        
+        if(userCheck.length > 0){
+            if(userCheck[0].uId === loginId && userCheck[0].uPw === loginPw){
+                sessionStorage.getItem('userId',loginId);
+                sessionStorage.getItem('userId');
+                navigator('/', {replace:true});
+            }
+        }
+        else {
+            alert("아이디와 비밀번호를 확인해주세요.");
+            setLoginId("");
+            setLoginPw("");
+        }
+    }
 
     return (
         <div className="Login">
@@ -12,12 +39,12 @@ const Login = () => {
                     <div className="is_box">
                         <div className="input_box">
                             <label className="input_label">
-                                <input type="text" placeholder="ID"/>
+                                <input type="text" placeholder="ID" ref={idRef} onChange={(e) => setLoginId(e.target.value)} value={loginId} />
                             </label>
                             <label className="input_label">
-                                <input type="password" placeholder="PASSWORD"/>
+                                <input type="password" placeholder="PASSWORD" onChange={(e) => setLoginPw(e.target.value)} value={loginPw} />
                             </label>
-                            <button className="input_btn">Log in</button>
+                            <button className="input_btn" onClick={loginSubmit}>Log in</button>
                         </div>
                     </div>
                 </div>
