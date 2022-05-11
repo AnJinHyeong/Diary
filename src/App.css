@@ -26,6 +26,24 @@ h1 h2 h3 h4 h5 h6 {
     width: 100%;
 }
 
+@media screen and (min-width: 0px) and (max-width: 375px){
+    .Footer{
+
+    }
+}
+
+@media screen and (min-width: 375px){
+    .Footer{
+        
+    }
+}
+
+@media screen and (min-width: 400px){
+    .Footer{
+        
+    }
+}
+
 body{
     background-color: rgba(var(--b3f,250,250,250),1);
     display: flex;
@@ -180,19 +198,15 @@ body{
 
 /* Footer */
 .Footer{
-    position: absolute; 
-    right: 0px; 
-    bottom: 0px;
-    width: 40px;
+    width: 99%;
     height: 40px;
-    /* border: 1px solid rgb(211, 211, 211); */
     color: white;
     border-radius: 30px;
     margin: 0 20px 20px 0;
     display: flex;
     font-size: 16px;
-    justify-content: center;
-    align-items: center;
+    justify-content: end;
+    align-items: end;
     cursor: pointer;
 }
 

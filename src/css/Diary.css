@@ -3,13 +3,128 @@
     
 }
 
+@media screen and (min-width: 0px) and (max-width: 400px){
+    .dMain{
+        padding: 20px 20px 10px;
+        margin: 0 auto;
+    }
+    .dM-l{
+        margin: 0 auto;
+        margin-bottom: 20px;
+        min-width: 300px;
+    }
+    .dM-r{
+        margin: 0 auto;
+        min-width: 300px;
+    }
+    .DrSectionList{
+        min-height: 520px;
+        max-height: 520px;
+    }
+    .DrSection{
+        min-width: 300px;
+    }
+    .DlSection{
+        max-height: 150px;
+    }
+    .date_text{
+        font-size: 14px;
+    }
+    .DiaryItem .diary_content {
+        font-size: 10px;
+    }
+    .EmotionItem span{
+        font-size: 10px;
+    }
+    .DE_inner_life{
+        max-height: 130px;
+        height: 130px;
+    }
+}
+
+@media screen and (min-width: 400px) and (max-width: 850px){
+    .dMain{
+        padding: 20px 40px 10px;
+        margin: 0 auto;
+    }
+    .dM-l{
+        width: 70%;
+        margin: 0 auto 20px;
+        min-width: 300px;
+    }
+    .dM-r{
+        width: 70%;
+        min-width: 330px;
+        margin: 0 auto;
+    }
+    .DrSectionList{
+        min-height: 520px;
+        max-height: 520px;
+    }
+    .DlSection{
+        max-height: 150px;
+        height: 150px;
+    }
+    .date_text{
+        font-size: 16px;
+    }
+    .DiaryItem .diary_content {
+        font-size: 10px;
+    }
+    .EmotionItem span{
+        font-size: 10px;
+    }
+    .DE_inner_life{
+        max-height: 130px;
+        height: 130px;
+    }
+}
+
+@media screen and (min-width: 850px){
+    .dMain{
+        display: flex;
+        padding: 20px 40px 10px;
+        margin: 40px auto 60px;
+    }
+    .dM-l{
+        width: 200px;
+    }
+    .dM-r{
+        width: 550px;
+        margin: 0 50px;
+    }
+    .DrSectionList{
+        min-height: 650px;
+        max-height: 70vh;
+    }
+    .DrSection{
+        height: 650px;
+    }
+    .DlSection{
+        max-height: 600px;
+    }
+    .date_text{
+        font-size: 18px;
+    }
+    .DiaryItem .diary_content {
+        font-size: 12px;
+    }
+    .EmotionItem span{
+        font-size: 14px;
+    }
+    .DE_inner_life{
+        max-height: 200px;
+        height: 200px;
+    }
+}
+
+
+
 
 .dMain{
-    display: flex;
     flex-direction: row;
     justify-content: center;
-    padding: 20px 40px;
-    margin: 0 auto;
+    /* padding: 20px 40px; */
     height: max-content;
 }
 
@@ -19,7 +134,6 @@
     justify-content: center;
     align-content: center;
     color: black;
-    width: 200px;
     height: 100%;
 }
 
@@ -33,9 +147,7 @@
     justify-content: center;
     align-content: center;
     color: black;
-    width: 550px;
     height: 100%;
-    margin: 0 50px;
 }
 
 
@@ -67,7 +179,6 @@
 .DlSection{
     padding: 20px 0;
     display: flex;
-    max-height: 600px;
     overflow-y: scroll;
 }
 
@@ -211,7 +322,7 @@
 
 .date_text {
     width: 50%;
-    font-size: 18px;
+    
     justify-content: center;
     font-family: 'Grape Nuts', cursive;
     font-weight: bold;
@@ -235,8 +346,6 @@
 /* DrSection */
 .DrSection{
     width: 100%;
-    min-width: 450px;
-    height: 650px;
     margin: 0;
     padding-top: 15px ;
     background-color: white;
@@ -252,17 +361,13 @@
 .DrSectionList{
     width: 100%;
     height: auto;
-    min-height: 650px;
-    max-height: 70vh;
+    
     margin: 0;
     padding: 10px 0;
     background-color: white;
     border: 1px solid rgba(var(--b6a,219,219,219),1);
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     overflow-y: scroll;
-    /* background-image: url( "../../public/assets/img/basic.jpg" );
-    background-repeat : no-repeat;
-    background-size : cover; */
 }
 
 .DrSectionList::-webkit-scrollbar{
@@ -354,13 +459,10 @@
     gap: 2%;
 }
 
-.DE_inner_life{
-    max-height: 200px;
-    height: 200px;
-}
+
 
 .DE_inner_life textarea{
-    width: 500px;
+    width: 97%;
     height: 100%;
     border: 1px solid #dcdcdc;
     resize: none;
@@ -411,9 +513,7 @@
     margin-bottom: 10px;
   }
   
-  .EmotionItem span{
-    font-size: 14px;
-  }
+  
   
   .EmotionItem_off {
     background-color: #ececec;
@@ -525,7 +625,6 @@
 }
 
 .DiaryItem .diary_content {
-    font-size: 12px;
     text-align: left;
     overflow: hidden;
     text-overflow: ellipsis;
