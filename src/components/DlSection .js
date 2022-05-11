@@ -2,19 +2,29 @@ import { useContext } from "react";
 import { DiaryStateContext } from "../App";
 import DiaryLikeItem from "./DiaryLikeItem";
 
-const DlSection = ({text}) => {
+const DlSection = ({diaryList}) => {
 
-    const diaryList = useContext(DiaryStateContext);
+    const userNickName = sessionStorage.getItem('userNick');
+    
+    const getProcessedDiaryList = () => {
+        const sortedList = diaryList.sort((a,b) => parseInt(a.date) - parseInt(b.date));
+        return sortedList;
+    };
 
     return (
         <div>
             <div className="DlHeader">
-                <h2>{text}</h2>
+                {
+                    userNickName !== null ?
+                    <h2>{userNickName + `'s DIARY`}</h2> : null
+                }
             </div>
             <div className="DlSection">
                 <ul>
-                    { 
-                        diaryList.map((it) => it.likeDay === 1 ? <DiaryLikeItem key={it.id} id={it.id} date={it.date} content={it.content}/> : null) 
+                    {
+                        getProcessedDiaryList().map((it) => it.likeDay === 1 ? (
+                            <DiaryLikeItem key={it.id} id={it.id} date={it.date} content={it.content}/> 
+                        ) : null)
                     }
                 </ul>
             </div>

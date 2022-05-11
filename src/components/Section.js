@@ -2,25 +2,25 @@ import TopLine from "../components/TopLine";
 import DlSection from "../components/DlSection ";
 import DrSection from "./DrSection";
 import Footer from "./Footer";
-import { Link } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { DiaryDispatchContext, DiaryStateContext } from "../App";
 
 const Section = ({pageView, isEdit, originData}) => {
 
-    const sessionId = sessionStorage.getItem('userId'); // -> tang 반환
-    console.log(sessionId);
+    const diaryList = useContext(DiaryStateContext);
 
     return (
         <div className="Section">
             <TopLine />
             <div className="dMain">
                 <div className="dM-l">
-                    <DlSection text={"JinHyeong's Daily Life"}/>
+                    {diaryList && <DlSection diaryList={diaryList}/>}
                 </div>
                 <div className="dM-r">
-                    <DrSection pageView={pageView} isEdit={isEdit} originData={originData}/>
+                    {diaryList && <DrSection pageView={pageView} isEdit={isEdit} originData={originData} diaryList={diaryList} />}
                 </div>
             </div>
-            <Link to={"/login"}><Footer /></Link>
+            <Footer />
         </div>
     );
 

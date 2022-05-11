@@ -88,9 +88,22 @@
     font-size: 14px;
 }
 
-.DlSection ul li span{
+.DlSection ul li .span1{
     margin-right: 7px;
-    width: 120px;
+    width: 10px;
+    font-size: 8px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+.DlSection ul li .span2{
+    margin-right: 7px;
+    width: 130px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
 }
 
 .DlSection ul li p{
@@ -100,6 +113,7 @@
     height: 20px;
     white-space: pre;
     font-size: 12px;
+    cursor: pointer;
 }
 
 

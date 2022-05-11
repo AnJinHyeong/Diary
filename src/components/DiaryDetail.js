@@ -8,23 +8,23 @@ import { emotionList } from "../utils/emotion";
 
 const DiaryDetail = () => {
 
-    const {id} = useParams();
-    const navigate = useNavigate();
-    const { onLike, offLike } = useContext(DiaryDispatchContext);
     const diaryList = useContext(DiaryStateContext);
+    const { onLike, offLike } = useContext(DiaryDispatchContext);
+    const {id} = useParams();
+
+    const userId = sessionStorage.getItem('userId');
     const [data, setData] = useState();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if(diaryList.length >= 1){
             const targetDiary = diaryList.find((it) => parseInt(it.id) === parseInt(id));
 
-            console.log(diaryList);
-
             if(targetDiary){
                 setData(targetDiary);
             } else {
                 alert("없는 일기 입니다.");
-                navigate('/' , {replace : true});
+                navigate('/home' , {replace : true});
             }
         }
 
@@ -47,9 +47,9 @@ const DiaryDetail = () => {
                     <div className="DV_inner_info">
                         {
                             data.likeDay === 0 ? 
-                            <i className="fa-regular fa-heart unlikeDay_btn" onClick={() => onLike(id)} /> 
+                            <i className="fa-regular fa-heart unlikeDay_btn" onClick={() => onLike(id,data.date,data.content,data.emotion,userId)} /> 
                             : 
-                            <i className="fa-solid fa-heart likeDay_btn" onClick={() => offLike(id)} />
+                            <i className="fa-solid fa-heart likeDay_btn" onClick={() => offLike(id,data.date,data.content,data.emotion,userId)} />
                         }
                         <div className="diary_date">{getStringDate(new Date(data.date))}</div>
                     </div>

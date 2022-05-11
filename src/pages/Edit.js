@@ -9,8 +9,19 @@ const Edit = () => {
     const navigate = useNavigate();
     const diaryList = useContext(DiaryStateContext);
     const [originData, setOriginData] = useState();
+    const user = sessionStorage.getItem('userId');
 
     useEffect(() => {
+      const titleElement = document.getElementsByTagName('title')[0];
+      titleElement.innerHTML = `DAILY DIARY - ${id} diary edit`
+    },[]);
+
+    useEffect(() => {
+
+        if(user === null){
+            alert('로그인 후 이용이 가능합니다.');
+            navigate('/', {replace: true});
+        }
     
         if(diaryList.length >= 1){
           const targetDiary = diaryList.find((it) => parseInt(it.id) === parseInt(id));
@@ -19,7 +30,7 @@ const Edit = () => {
             setOriginData(targetDiary);
           } else {
             alert("없는 일기 입니다.");
-            navigate('/', {replace : true});
+            navigate('/home', {replace : true});
           }
         }
     

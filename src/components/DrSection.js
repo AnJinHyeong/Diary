@@ -5,26 +5,24 @@ import DiaryEditor from "./DiaryEditor";
 import DiaryDate from "./DiaryDate";
 import DiaryButton from "./DiaryButton";
 import DiaryList from "./DiaryList";
-
-import { DiaryStateContext } from "../App";
 import DiaryDetail from "./DiaryDetail";
 import { DiaryDispatchContext } from "../App";
 
 
-const DrSection = ({pageView, isEdit, originData}) => {
+const DrSection = ({pageView, isEdit, originData, diaryList}) => {
 
-    const diaryList = useContext(DiaryStateContext);
     const { onRemove } = useContext(DiaryDispatchContext);
 
+    
+    const userId = sessionStorage.getItem('userId');
     const navigate = useNavigate();
     const {id} = useParams();
     const [curDate, setCurDate] = useState(new Date());
     const [data, setData] = useState([]);
     const headText = `${curDate.getFullYear()}. ${curDate.getMonth() + 1}`;
 
-
     useEffect(() => {
-        if(diaryList.length >= 0){
+        if(diaryList.length > 0){
             const firstDay = new Date(
                 curDate.getFullYear(),
                 curDate.getMonth(),
@@ -34,13 +32,16 @@ const DrSection = ({pageView, isEdit, originData}) => {
             const lastDay = new Date(
                 curDate.getFullYear(),
                 curDate.getMonth() + 1,
-                0
+                0,
+                23,
+                59,
+                59
             ).getTime();
-    
-            setData(diaryList.filter((it) => firstDay <= it.date && it.date <= lastDay));
             
+            setData(diaryList.filter((it) => firstDay <= it.date && it.date <= lastDay));
         }
     }, [diaryList, curDate]);
+
 
     const nextMonth = () => {
         setCurDate(
@@ -56,8 +57,8 @@ const DrSection = ({pageView, isEdit, originData}) => {
 
     const handleRemove = () => {
         if(window.confirm("정말 삭제하시겠습니까?")){
-            onRemove(Number(id));
-            navigate('/' , {replace : true});
+            onRemove(Number(id), userId);
+            navigate('/home' , {replace : true});
         }
     }
 
@@ -79,11 +80,11 @@ const DrSection = ({pageView, isEdit, originData}) => {
                     {
                         pageView !== "list" ?  
                         <div className="info_box">
-                            { pageView === "diary" ? <Link to={`/edit/${id}`}><i className="fa-solid fa-file-pen edit_btn" /></Link> : null }
+                            { pageView === "diary" ? <i className="fa-solid fa-file-pen edit_btn" onClick={() => navigate(`/edit/${id}`)} /> : null }
                             { pageView === "diary" ? <i className="fa-regular fa-trash-can delete_btn" onClick={() => {handleRemove()}}/> : null }
                             { 
                                 pageView === "diary" ? 
-                                <i className="fas fa-times close_btn" onClick={() => navigate(`/`)}></i> 
+                                <i className="fas fa-times close_btn" onClick={() => navigate(`/home`)}></i> 
                                 :
                                 <i className="fas fa-times close_btn" onClick={() => navigate(-1)}></i> 
                             }

@@ -17,6 +17,7 @@ const DiaryEditor = ({ pageView, isEdit, originData }) => {
     const [emotion, setEmotion] = useState(3);
     const [content, setContent] = useState("");
     const [likeDay, setLikeDay] = useState(0);
+    const [userId, setUserId] = useState(sessionStorage.getItem('userId'));
 
     const { onCreate, onEdit } = useContext(DiaryDispatchContext);
 
@@ -37,12 +38,12 @@ const DiaryEditor = ({ pageView, isEdit, originData }) => {
 
         // if(window.confirm(isEdit ? "일기를 수정하시겠습니까?" : "새로운 일기를 작성하시겠습니까?")){
         if(!isEdit){
-            onCreate(date, content, emotion, likeDay);
+            onCreate(date, content, emotion, likeDay, userId);
         } else {
-            onEdit(originData.id, date, content, emotion, likeDay);
+            onEdit(originData.id, date, content, emotion, likeDay, userId);
         }
         // }
-        navigate('/', {replace : true});
+        navigate('/home', {replace : true});
     }
 
     useEffect(() => {

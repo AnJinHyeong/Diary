@@ -1,6 +1,6 @@
 import React from "react";
 
-const EmotionItem = ({emotion_id, emotion_img, emotion_descript, onClick, isSelected}) => {
+const EmotionItem = React.memo(({emotion_id, emotion_img, emotion_descript, onClick, isSelected}) => {
 
     return (
         <div className={["EmotionItem", isSelected ? `EmotionItem_on_${emotion_id}` : "EmotionItem_off"].join(" ")} 
@@ -10,6 +10,6 @@ const EmotionItem = ({emotion_id, emotion_img, emotion_descript, onClick, isSele
         </div>
     );
 
-}
+});
 
 export default EmotionItem;

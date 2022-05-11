@@ -5,6 +5,7 @@ import { DiaryDispatchContext } from "../App";
 const DiaryItem = ({id,date,content,emotion,likeDay}) => {
 
 
+    const userId = sessionStorage.getItem('userId');
     const strDate = new Date(parseInt(date)).toLocaleDateString().slice(0, -1);
     const navigate = useNavigate();
     const { onLike, offLike } = useContext(DiaryDispatchContext);
@@ -25,9 +26,9 @@ const DiaryItem = ({id,date,content,emotion,likeDay}) => {
             <div className="btn_wrapper">
                 {
                     likeDay === 0 ? 
-                    <i className="fa-regular fa-heart unlikeDay_btn" onClick={() => onLike(id)} />
+                    <i className="fa-regular fa-heart unlikeDay_btn" onClick={() => onLike(id,date,content,emotion,userId)} />
                     :
-                    <i className="fa-solid fa-heart likeDay_btn" onClick={() => offLike(id)} />
+                    <i className="fa-solid fa-heart likeDay_btn" onClick={() => offLike(id,date,content,emotion,userId)} />
                 }
             </div>
         </div>
@@ -35,4 +36,4 @@ const DiaryItem = ({id,date,content,emotion,likeDay}) => {
 
 }
 
-export default DiaryItem;
+export default React.memo(DiaryItem);
